@@ -11,7 +11,7 @@ EXPOSE 8080
 LABEL version="1.0"
 
 # Copy jar files
-COPY *.jar /data/app.jar
+COPY app.jar /data/app.jar
 
 # This command runs when docker starts
 ENTRYPOINT ["java","-jar","app.jar"]

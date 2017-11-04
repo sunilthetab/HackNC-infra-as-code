@@ -8,3 +8,37 @@
 
   - name: Deploy Docker container
     script: /home/ec2-user/deploy.sh
+
+---
+- hosts: test
+  remote_user: root
+  sudo: yes
+
+  tasks:
+  - name: Upload JAR
+    copy: src=/opt/bitnami/apps/jenkins/jenkins_home/workspace/build/target/ScrumsterService-1.0-SNAPSHOT.jar dest=/home/ec2-user/app.jar
+
+  - name: Upload Dockerfile
+    copy: src=/home/bitnami/Dockerfile dest=/home/ec2-user/Dockerfile mode=0755
+
+  - name: Upload deploy.sh scripts
+    copy: src=/home/bitnami/deploy.sh dest=/home/ec2-user/deploy.sh mode=0755
+
+  - name: Deploy Docker container
+    become_user: ec2-user
+    script: /home/ec2-user/deploy.sh
+
+
+
+---
+- hosts: prod
+  tasks:
+  - name: Upload JAR
+    copy: src=target/ScrumsterService-1.0-SNAPSHOT.jar dest=/home/ec2-user/app.jar
+
+  - name: Upload Dockerfile
+    copy: src=Dockerfile dest=/home/ec2-user/Dockerfile mode=0755
+
+  - name: Deploy Docker container
+    become_user: ec2-user
+    script: deploy.sh

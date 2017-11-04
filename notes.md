@@ -93,3 +93,8 @@ $ docker build -t emma-image .
 
 # run emma
 $ docker run -p 80:8080 --name=emma -d emma-image
+
+
+# Final build and deploy command
+$ mvn clean install
+$ sudo ansible-playbook deploy.yml -i /opt/bitnami/inventory
