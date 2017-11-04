@@ -1,0 +1,10 @@
+---
+- hosts: test
+  remote_user: ec2-user
+
+  tasks:
+  - name: Upload JAR
+    copy: src=/opt/bitnami/apps/jenkins/jenkins_home/workspace/<build-job-name>/target/*.jar dest=/home/ec2-user/app.jar
+
+  - name: Deploy Docker container
+    script: /home/ec2-user/deploy.sh

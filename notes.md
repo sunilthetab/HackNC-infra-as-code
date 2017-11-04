@@ -82,11 +82,11 @@ $ docker stop emma # stop emma
 
 # copy jar file into host
 # stop docker instance
-$ docker stop emma
-$ docker rm `docker ps --no-trunc -aq`
+$ docker stop emma  || true
+$ docker rm `docker ps --no-trunc -aq`  || true
 
 # remove emma-image
-$ docker rmi -f temp
+$ docker rmi -f emma-image
 
 # create new emma-image
 $ docker build -t emma-image .
