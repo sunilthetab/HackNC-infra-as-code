@@ -42,3 +42,54 @@ $ sudo apt-get install maven -y
 $ mvn clean install
 $ java -jar target/ScrumsterService-1.0-SNAPSHOT.jar
 #### better to get $ java -jar target/*.jar
+
+
+
+## Dockerfile to run docker container
+#####################################
+# using docker with JAVA8 base
+FROM dpatriot/docker-awscli-java8
+
+# Maintainer information
+MAINTAINER "Sunil Narasimhamurthy suniltheta.com" <suniltheta@gmail.com>
+
+# Expose port so that user of this file knows
+EXPOSE 8080
+
+# Set label
+LABEL version="1.0"
+
+# Copy jar files
+COPY *.jar /data/app.jar
+
+# This command runs when docker starts
+ENTRYPOINT ["java","-jar","app.jar"]
+#####################################
+
+# docker run command
+### Sample run commands-> docker run -p 80:8080 -v /home/ec2-user:/data -it dpatriot/docker-awscli-java8 /bin/bash
+### for our application
+$ docker build -t emma-image .
+$ docker run -p 80:8080 --name=emma -d emma-image
+#### Now the application is accessible over port 80 (http)
+#### Other commands
+$ docker rm `docker ps --no-trunc -aq` #to remove dead containers
+$ docker ps -q # to list only running container ids
+$ docker stop emma # stop emma
+
+
+## Consolidated deploy steps
+
+# copy jar file into host
+# stop docker instance
+$ docker stop emma
+$ docker rm `docker ps --no-trunc -aq`
+
+# remove emma-image
+$ docker rmi -f temp
+
+# create new emma-image
+$ docker build -t emma-image .
+
+# run emma
+$ docker run -p 80:8080 --name=emma -d emma-image
