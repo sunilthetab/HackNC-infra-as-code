@@ -24,7 +24,14 @@ The Emma Bot's user interface is via Alexa wand/Echo. We have used multiple tech
 3) Building CI/CD pipeline to make deployment faster and successfully integrating the various parts and services used for our project. 
 
 ## What we learned
+1) Using REST APIs to implement methods for Java service.
+2) Writing Alexa skills and training it for customized events.
+3) Automating actions on two different platforms (google calendar and JIRA board) by providing just voice input.
 
 
 ## What's next for Emma Bot as Scrum Master
+1) Implementing more functionalities like notes/comment taking from user for his/her tasks.
+2) Creating sprints/issues although this would require more user input and larger voice inputs will tend to have more errors.
+3) Make it a cross-platform bot service , example any other Scrum Board softwares like Trello could be used.
+
 
