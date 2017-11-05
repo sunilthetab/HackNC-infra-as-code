@@ -48,3 +48,5 @@ The Emma Bot's user interface is via Alexa enabled device. Atlassian Jira is use
 * Implementing more functionalities like notes/comment taking from user for his/her tasks.
 * Creating sprints/issues although this would require more user input and larger voice inputs will tend to have more errors.
 * Make it a cross-platform bot service , example any other Scrum Boards like GitHub task tracker & Trello could be used.
+
+[Link to Devpost](https://devpost.com/software/emma-bot-as-scrum-master)
