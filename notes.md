@@ -57,23 +57,26 @@ better to get $ java -jar target/*.jar
 
 ### Dockerfile to run docker container
 -------------------------------
-#using docker with JAVA8 base
+```
+#Using docker with JAVA8 base<br>
 FROM dpatriot/docker-awscli-java8
 
-#Maintainer information
+#Maintainer information<br>
 MAINTAINER "Sunil Narasimhamurthy suniltheta.com" <suniltheta@gmail.com>
 
-#Expose port so that user of this file knows
+#Expose port so that user of this file knows<br>
 EXPOSE 8080
 
-#Set label
+#Set label<br>
 LABEL version="1.0"
 
-#Copy jar files
+#Copy jar files<br>
 COPY *.jar /data/app.jar
 
-#This command runs when docker starts
+#This command runs when docker starts<br>
 ENTRYPOINT ["java","-jar","app.jar"]
+```
+<br>
 ----------------------------------------
 
 ### docker run command<br>
@@ -83,17 +86,20 @@ for our application<br>
 `$ docker run -p 80:8080 --name=emma -d emma-image`<br>
 Now the application is accessible over port 80 (http)<br>
 Other commands<br>
-`$ docker rm `docker ps --no-trunc -aq` #to remove dead containers`<br>
-`$ docker ps -q # to list only running container ids`<br>
-`$ docker stop emma # stop emma`
-
+```
+$ docker rm `docker ps --no-trunc -aq` #to remove dead containers<br>
+$ docker ps -q # to list only running container ids<br>
+$ docker stop emma # stop emma
+```
 
 #### Consolidated deploy steps
 
 copy jar file into host<br>
 stop docker instance<br>
-`$ docker stop emma  || true`<br>
-`$ docker rm `docker ps --no-trunc -aq`  || true`
+```
+$ docker stop emma  || true<br>
+$ docker rm `docker ps --no-trunc -aq`  || true
+```
 
 remove emma-image<br>
 `$ docker rmi -f emma-image`
