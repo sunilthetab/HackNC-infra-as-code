@@ -1,17 +1,21 @@
 
 ### To start Ubuntu running via Vagrant
 ```
-$ vagrant init ubuntu/trusty64<br>
-$ vagrant up<br>
-$ vagrant ssh<br>
+$ vagrant init ubuntu/trusty64
+$ vagrant up
+$ vagrant ssh
 ```
 
 
 ### Inside Ubuntu instance
 #### To update and install all packages and softwares
 ```
-$ sudo apt-get update<br>
-$ sudo apt-get -y install git make vim python-dev python-pip libffi-dev libssl-dev libxml2-dev libxslt1-dev libjpeg8-dev zlib1g-dev<br>
+$ sudo apt-get update
+$ sudo apt-get -y install git make vim python-dev python-pip libffi-dev libssl-dev libxml2-dev libxslt1-dev libjpeg8-dev zlib1g-dev
+```
+# Incase of centOS machine run this extra step to set up proper repl
+```
+$ sudo yum --enablerepo=extras install epel-release
 ```
 
 ### To install ansible
@@ -26,9 +30,9 @@ $ sudo apt-get install ansible<br>
 
 ### Install python 3.6 and make it default<br>
 ```
-$ sudo apt-get install python3.6<br>
-$ alias python=python3.6<br>
-$ source ~/.bashrc<br>
+$ sudo apt-get install python3.6
+$ alias python=python3.6
+$ source ~/.bashrc
 ```
 
 Install awscli<br>
@@ -58,22 +62,22 @@ better to get $ java -jar target/*.jar
 ### Dockerfile to run docker container
 -------------------------------
 ```
-#Using docker with JAVA8 base<br>
+#Using docker with JAVA8 base
 FROM dpatriot/docker-awscli-java8
 
-#Maintainer information<br>
+#Maintainer information
 MAINTAINER "Sunil Narasimhamurthy suniltheta.com" <suniltheta@gmail.com>
 
-#Expose port so that user of this file knows<br>
+#Expose port so that user of this file knows
 EXPOSE 8080
 
-#Set label<br>
+#Set label
 LABEL version="1.0"
 
-#Copy jar files<br>
+#Copy jar files
 COPY *.jar /data/app.jar
 
-#This command runs when docker starts<br>
+#This command runs when docker starts
 ENTRYPOINT ["java","-jar","app.jar"]
 ```
 <br>
@@ -87,8 +91,8 @@ for our application<br>
 Now the application is accessible over port 80 (http)<br>
 Other commands<br>
 ```
-$ docker rm `docker ps --no-trunc -aq` #to remove dead containers<br>
-$ docker ps -q # to list only running container ids<br>
+$ docker rm `docker ps --no-trunc -aq` #to remove dead containers
+$ docker ps -q # to list only running container ids
 $ docker stop emma # stop emma
 ```
 
@@ -97,7 +101,7 @@ $ docker stop emma # stop emma
 copy jar file into host<br>
 stop docker instance<br>
 ```
-$ docker stop emma  || true<br>
+$ docker stop emma  || true
 $ docker rm `docker ps --no-trunc -aq`  || true
 ```
 
