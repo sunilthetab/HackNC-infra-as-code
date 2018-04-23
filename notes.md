@@ -13,7 +13,7 @@ $ vagrant ssh
 $ sudo apt-get update
 $ sudo apt-get -y install git make vim python-dev python-pip libffi-dev libssl-dev libxml2-dev libxslt1-dev libjpeg8-dev zlib1g-dev
 ```
-# Incase of centOS machine run this extra step to set up proper repl
+#### Incase of centOS machine run this extra step to set up proper repl
 ```
 $ sudo yum --enablerepo=extras install epel-release
 ```
